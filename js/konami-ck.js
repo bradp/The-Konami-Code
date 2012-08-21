@@ -1,0 +1,1 @@
+(function(e){e.fn.konami=function(t,n){n==undefined&&(n="38,38,40,40,37,39,37,39,66,65");return this.each(function(){var r=[];e(this).keydown(function(i){r.push(i.keyCode);while(r.length>n.split(",").length)r.shift();if(r.toString().indexOf(n)>=0){e(this).unbind("keydown",arguments.callee);t(i)}})})}})(jQuery);

@@ -8,54 +8,24 @@
  Author URI: 
  */
 
-
-// Derive the current path and load up Sanity
-$plugin_path = dirname(__FILE__).'/';
-if(class_exists('SanityPluginFramework') != true)
-    require_once($plugin_path.'framework/sanity.php');
+// Derive the current path
+$plugin_path = plugin_dir_url(__FILE__);
 
 
-/*
-*   Define your plugin class which extends the SanityPluginFramework
-*   Make sure you skip down to the end of this file, as there are a few
-*   lines of code that are very important.
-*/ 
-class ExamplePlugin extends SanityPluginFramework {
-  
-  /*
-  * Some required plugin information
-  */
-  var $version = '1.0';
-  
-  /*
-  *   Required __construct() function that initalizes the Sanity Framework
-  */
-  function __construct() {
-      parent::__construct(__FILE__);
-  }
-
-  /*
-  *   Run during the activation of the plugin
-  */
-  function activate() {
-    
-  }
-  
-  /*
-  *   Run during the initialization of Wordpress
-  */
-  function initialize() {
-  
-  }
-  
+function tkc_enqueue() {
+  global $plugin_path;
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('konami', $plugin_path . 'js/konami.js', 'jquery');
 }
+add_action('wp_enqueue_scripts', 'tkc_enqueue');
 
-// Initalize the your plugin
-$ExamplePlugin = new ExamplePlugin();
-
-// Add an activation hook
-register_activation_hook(__FILE__, array(&$ExamplePlugin, 'activate'));
-
-// Run the plugins initialization method
-add_action('init', array(&$ExamplePlugin, 'initialize'));
-
+function tkc_engage() {
+  ?><script type="text/javascript">
+      jQuery(document).ready(function($){
+        $(window).konami(function(){
+          alert('Konami Code Activated');
+        });
+      });
+    </script><?php 
+}
+add_action('wp_footer', 'tkc_engage');
