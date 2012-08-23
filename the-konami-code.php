@@ -1,11 +1,11 @@
 <?php
 /*
  Plugin Name: The Konami Code
- Plugin URI: 
+ Plugin URI:
  Description: Easily add easter eggs to your site, with class
  Author: AaronHolbrook and BradParbs
  Version: 1.0
- Author URI: 
+ Author URI:
  */
 
 // Derive the current path
@@ -25,8 +25,11 @@ function tkc_engage() {
       jQuery(document).ready(function($){
         $(window).konami(function(){
           alert('Konami Code Activated');
+          <?php do_action('easter_egg_activate'); ?>
         });
       });
-    </script><?php 
+    </script><?php
 }
 add_action('wp_footer', 'tkc_engage');
+
+require_once($plugin_path . '/eggs/raptor/raptorize.php');
