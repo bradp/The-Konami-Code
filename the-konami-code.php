@@ -16,6 +16,7 @@ function tkc_enqueue() {
   global $plugin_path;
   wp_enqueue_script('jquery');
   wp_enqueue_script('konami', $plugin_path . 'js/konami.js', 'jquery');
+  do_action('load_konami_scripts');
 }
 add_action('wp_enqueue_scripts', 'tkc_enqueue');
 
