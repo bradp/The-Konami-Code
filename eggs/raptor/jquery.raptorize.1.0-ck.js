@@ -1,0 +1,7 @@
+/*
+ * jQuery Raptorize Plugin 1.0
+ * www.ZURB.com/playground
+ * Copyright 2010, ZURB
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+*/(function(e){e.fn.raptorize=function(t){var n={enterOn:"click",delayTime:5e3},t=e.extend(n,t);return this.each(function(){function a(){o=!0;if(r){function t(){document.getElementById("elRaptorShriek").play()}t()}u.animate({bottom:"0"},function(){e(this).animate({bottom:"-130px"},100,function(){var t=e(this).position().left+400;e(this).delay(300).animate({right:t},2200,function(){u=e("#elRaptor").css({bottom:"-700px",right:"0"});o=!1})})})}var n=e(this),r=!1;if(e.browser.mozilla&&e.browser.version.substr(0,5)>="1.9.2"||e.browser.webkit)r=!0;var i='<img id="elRaptor" style="display: none" src="http://konami/wp-content/plugins/the-konami-code/eggs/raptor/raptor.png" />',s='<audio id="elRaptorShriek" preload="auto"><source src="raptor-sound.mp3" /><source src="raptor-sound.ogg" /></audio>',o=!1;e("body").append(i);r&&e("body").append(s);var u=e("#elRaptor").css({position:"fixed",bottom:"-700px",right:"0",display:"block"});if(t.enterOn=="timer")setTimeout(a,t.delayTime);else if(t.enterOn=="click")n.bind("click",function(e){e.preventDefault();o||a()});else if(t.enterOn=="konami-code"){var f=[],l="38,38,40,40,37,39,37,39,66,65";e(window).bind("keydown.raptorz",function(t){f.push(t.keyCode);if(f.toString().indexOf(l)>=0){a();e(window).unbind("keydown.raptorz")}},!0)}})}})(jQuery);

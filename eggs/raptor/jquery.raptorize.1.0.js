@@ -30,7 +30,7 @@
 			}
 			
 			//Raptor Vars
-			var raptorImageMarkup = '<img id="elRaptor" style="display: none" src="raptor.png" />'
+			var raptorImageMarkup = '<img id="elRaptor" style="display: none" src="http://konami/wp-content/plugins/the-konami-code/eggs/raptor/raptor.png" />'
 			var raptorAudioMarkup = '<audio id="elRaptorShriek" preload="auto"><source src="raptor-sound.mp3" /><source src="raptor-sound.ogg" /></audio>';	
 			var locked = false;
 			
